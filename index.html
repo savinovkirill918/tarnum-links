@@ -263,9 +263,9 @@ h1.name .ch{display:inline-block;
 .pc-tt{--brand:#fd4d6c;--brand-text:#ff8ba0;--brand-line:rgba(253,77,108,.45);--brand-soft:rgba(253,77,108,.14);--glow:rgba(253,77,108,.15)}
 
 @media (min-width:760px){
-  .bento > .pc-yt{grid-column:span 3}
   .bento > .pc-tw{grid-column:span 3}
-  .bento > .pc-tg{grid-column:span 4}
+  .bento > .pc-tg{grid-column:span 3}
+  .bento > .pc-yt{grid-column:span 4}
   .bento > .pc-tt{grid-column:span 2}
 }
 
@@ -312,6 +312,8 @@ h1.name .ch{display:inline-block;
 @media (min-width:760px){.don-grid{grid-template-columns:repeat(3,1fr)}}
 .don-note{margin-top:22px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted-2);letter-spacing:.05em}
 .don-note b{color:var(--gold);font-weight:600}
+.don-note a{color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(240,182,74,.45);transition:border-color .3s}
+.don-note a:hover{border-bottom-color:var(--gold-hi)}
 .dn-ico{width:46px;height:46px;border-radius:13px;overflow:hidden;flex:none}
 .dn-ico img{width:100%;height:100%;object-fit:cover;display:block}
 .dn-ico svg{width:100%;height:100%;display:block}
@@ -324,6 +326,20 @@ h1.name .ch{display:inline-block;
   border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 11px;white-space:nowrap}
 .pc-dn .pc-title{font-size:15.5px}
 .pc-dn .pc-desc{margin-top:10px;font-size:13px}
+
+/* ---------- прайс ---------- */
+.price-grid{display:grid;grid-template-columns:1fr;gap:10px;list-style:none}
+@media (min-width:760px){.price-grid{grid-template-columns:1fr 1fr;gap:12px}}
+.price-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;
+  transition:border-color .35s}
+.price-item:hover{border-color:rgba(240,182,74,.42)}
+.price-item.wide{grid-column:1/-1}
+.pr-row{display:flex;align-items:baseline;gap:12px}
+.pr-name{font-size:14px;font-weight:600;color:var(--ink);min-width:0}
+.pr-dots{flex:1;min-width:14px;border-bottom:1px dashed rgba(246,241,228,.18);transform:translateY(-3px)}
+.pr-val{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gold-hi);white-space:nowrap;flex:none}
+.pr-sub{margin-top:7px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted-2)}
+.pr-sub b{color:var(--gold);font-weight:600}
 
 /* ---------- футер ---------- */
 footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
@@ -400,7 +416,7 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
         </div>
 
         <div class="cta-row" data-hero>
-          <a class="btn btn-gold" href="https://twitch.tv/tarnum_mlbb" target="_blank" rel="noopener">
+          <a class="btn btn-gold" href="#channels" data-scrollto="channels">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.57 2h9.36c.59 0 1.07.48 1.07 1.07v10.32l-4.28 4.28h-3.21l-2.14 2.15H9.5v-2.02H5.21L2 14.6V3.07C2 2.48 2.48 2 3.07 2h8.5Zm9.36 12.3V3.07H4.14v12.32h4.29v2.68l2.68-2.68h4.28l4.29-4.29.25.2ZM16.64 6.29h1.6v5.35h-1.6V6.3Zm-4.29 0h1.6v5.35h-1.6V6.3Z"/></svg>
             Смотреть стрим
           </a>
@@ -431,20 +447,6 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
       </div>
 
       <div class="bento">
-        <!-- YouTube -->
-        <a class="pcard pc-yt" data-reveal href="https://youtube.com/@tarnum_mlbb?si=hMpd2u6gPRV6DD-b" target="_blank" rel="noopener" aria-label="YouTube-канал Tarnum — откроется в новой вкладке">
-          <span class="glow" aria-hidden="true"></span>
-          <span class="pc-top">
-            <span class="pc-ava pc-ava--brand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
-            <span class="pc-id">
-              <span class="pc-platform">YouTube</span>
-              <span class="pc-title">@TaRnUm_Mlbb</span>
-            </span>
-          </span>
-          <span class="pc-desc">Геймплеи и записи стримов — самое время заглянуть.</span>
-          <span class="pc-go">Смотреть <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></span></span>
-        </a>
-
         <!-- Twitch -->
         <a class="pcard pc-tw" data-reveal href="https://twitch.tv/tarnum_mlbb" target="_blank" rel="noopener" aria-label="Twitch-канал Tarnum — откроется в новой вкладке">
           <span class="glow" aria-hidden="true"></span>
@@ -466,7 +468,7 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
             <span class="pc-ava pc-ava--brand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
             <span class="pc-id">
               <span class="pc-platform">Telegram</span>
-              <span class="pc-title">Канал и чат комьюнити</span>
+              <span class="pc-title">Каналы и чат</span>
             </span>
           </span>
           <span class="pc-desc">Анонсы стримов и новости — на канале; обсуждать матчи и искать пати — в чате.</span>
@@ -481,6 +483,20 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
             </a>
           </span>
         </div>
+
+        <!-- YouTube -->
+        <a class="pcard pc-yt" data-reveal href="https://youtube.com/@tarnum_mlbb?si=hMpd2u6gPRV6DD-b" target="_blank" rel="noopener" aria-label="YouTube-канал Tarnum — откроется в новой вкладке">
+          <span class="glow" aria-hidden="true"></span>
+          <span class="pc-top">
+            <span class="pc-ava pc-ava--brand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+            <span class="pc-id">
+              <span class="pc-platform">YouTube</span>
+              <span class="pc-title">@TaRnUm_Mlbb</span>
+            </span>
+          </span>
+          <span class="pc-desc">Геймплеи и записи стримов — самое время заглянуть.</span>
+          <span class="pc-go">Смотреть <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></span></span>
+        </a>
 
         <!-- TikTok -->
         <a class="pcard pc-tt" data-reveal href="https://www.tiktok.com/@tarnum_mlbb?_r=1&_t=ZS-96U44z78nyr" target="_blank" rel="noopener" aria-label="TikTok Tarnum — откроется в новой вкладке">
@@ -525,6 +541,20 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
       </div>
 
       <div class="don-grid">
+        <a class="pcard pc-dn" data-reveal style="--brand:#2e9bf5;--brand-text:#8ac2fa;--brand-line:rgba(46,155,245,.45);--brand-soft:rgba(46,155,245,.13);--glow:rgba(46,155,245,.14)"
+           href="https://trula.io/dp/twitch/tarnum_mlbb" target="_blank" rel="noopener" aria-label="Донат через Trula — откроется в новой вкладке">
+          <span class="glow" aria-hidden="true"></span>
+          <span class="pc-top">
+            <span class="dn-ico dn-glyph" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M2 13.5593C2 7.38726 2 4.30123 3.81167 2.30094C3.96659 2.12988 4.12988 1.96659 4.30094 1.81167C6.30123 0 9.38726 0 15.5593 0C21.7314 0 24.8174 0 26.8177 1.81167C26.9888 1.96659 27.1521 2.12988 27.307 2.30094C29.1186 4.30123 29.1186 7.38726 29.1186 13.5593C29.1186 19.7314 29.1186 22.8174 27.307 24.8177C27.1521 24.9888 26.9888 25.1521 26.8177 25.307C24.8174 27.1186 21.7314 27.1186 15.5593 27.1186C9.38726 27.1186 6.30123 27.1186 4.30094 25.307C4.12988 25.1521 3.96659 24.9888 3.81167 24.8177C2 22.8174 2 19.7314 2 13.5593Z" fill="#D3DFE9"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2 13.0169C2 6.8807 2 3.81257 3.90629 1.90629C5.81257 0 8.8807 0 15.0169 0H16.1017C22.2379 0 25.3061 0 27.2124 1.90629C29.1186 3.81257 29.1186 6.8807 29.1186 13.0169V14.1017C29.1186 20.2379 29.1186 23.3061 27.2124 25.2124C25.3061 27.1186 22.2379 27.1186 16.1017 27.1186H15.0169H12.3051C9.90873 27.1186 7.9661 29.0613 7.9661 31.4576V32H6.33898V26.5763L6.33926 26.5736C5.3425 26.2913 4.55676 25.8628 3.90629 25.2124C2 23.3061 2 20.2379 2 14.1017V13.0169ZM5.51978 3.51978C4.16949 4.87007 4.16949 7.04332 4.16949 11.3898V15.7288C4.16949 20.0753 4.16949 22.2486 5.51978 23.5989C6.87007 24.9492 9.04332 24.9492 13.3898 24.9492H17.7288C22.0753 24.9492 24.2486 24.9492 25.5989 23.5989C26.9492 22.2486 26.9492 20.0753 26.9492 15.7288V11.3898C26.9492 7.04332 26.9492 4.87007 25.5989 3.51978C24.2486 2.16949 22.0753 2.16949 17.7288 2.16949H13.3898C9.04332 2.16949 6.87007 2.16949 5.51978 3.51978ZM18.479 10.6761C20.51 12.1144 21.5254 12.8336 21.5254 13.8305C21.5254 14.8274 20.51 15.5466 18.479 16.9849L16.8824 18.1156C14.1655 20.0398 12.807 21.0019 11.7425 20.4607C10.678 19.9195 10.678 18.2668 10.678 14.9613V12.6998C10.678 9.39427 10.678 7.74151 11.7425 7.2003C12.807 6.65909 14.1655 7.62118 16.8824 9.54537L18.479 10.6761Z" fill="#007EF2"/></svg></span>
+            <span class="pc-id">
+              <span class="pc-platform">Trula</span>
+              <span class="pc-title">twitch · tarnum_mlbb</span>
+            </span>
+            <span class="dn-badge">Онлайн</span>
+          </span>
+          <span class="pc-desc">Голосовые на стриме и заказ музыки — приоритетный способ, прямо через Twitch.</span>
+          <span class="pc-go">Задонатить <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></span></span>
+        </a>
         <a class="pcard pc-dn" data-reveal style="--brand:#ffa03a;--brand-text:#ffc27a;--brand-line:rgba(255,160,58,.45);--brand-soft:rgba(255,160,58,.13);--glow:rgba(255,160,58,.14)"
            href="https://www.donationalerts.com/r/tarnum_ml" target="_blank" rel="noopener" aria-label="Донат через DonationAlerts — откроется в новой вкладке">
           <span class="glow" aria-hidden="true"></span>
@@ -555,23 +585,36 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
           <span class="pc-go">Задонатить <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></span></span>
         </a>
 
-        <a class="pcard pc-dn" data-reveal style="--brand:#2e9bf5;--brand-text:#8ac2fa;--brand-line:rgba(46,155,245,.45);--brand-soft:rgba(46,155,245,.13);--glow:rgba(46,155,245,.14)"
-           href="https://trula.io/dp/twitch/tarnum_mlbb" target="_blank" rel="noopener" aria-label="Донат через Trula — откроется в новой вкладке">
-          <span class="glow" aria-hidden="true"></span>
-          <span class="pc-top">
-            <span class="dn-ico dn-glyph" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M2 13.5593C2 7.38726 2 4.30123 3.81167 2.30094C3.96659 2.12988 4.12988 1.96659 4.30094 1.81167C6.30123 0 9.38726 0 15.5593 0C21.7314 0 24.8174 0 26.8177 1.81167C26.9888 1.96659 27.1521 2.12988 27.307 2.30094C29.1186 4.30123 29.1186 7.38726 29.1186 13.5593C29.1186 19.7314 29.1186 22.8174 27.307 24.8177C27.1521 24.9888 26.9888 25.1521 26.8177 25.307C24.8174 27.1186 21.7314 27.1186 15.5593 27.1186C9.38726 27.1186 6.30123 27.1186 4.30094 25.307C4.12988 25.1521 3.96659 24.9888 3.81167 24.8177C2 22.8174 2 19.7314 2 13.5593Z" fill="#D3DFE9"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2 13.0169C2 6.8807 2 3.81257 3.90629 1.90629C5.81257 0 8.8807 0 15.0169 0H16.1017C22.2379 0 25.3061 0 27.2124 1.90629C29.1186 3.81257 29.1186 6.8807 29.1186 13.0169V14.1017C29.1186 20.2379 29.1186 23.3061 27.2124 25.2124C25.3061 27.1186 22.2379 27.1186 16.1017 27.1186H15.0169H12.3051C9.90873 27.1186 7.9661 29.0613 7.9661 31.4576V32H6.33898V26.5763L6.33926 26.5736C5.3425 26.2913 4.55676 25.8628 3.90629 25.2124C2 23.3061 2 20.2379 2 14.1017V13.0169ZM5.51978 3.51978C4.16949 4.87007 4.16949 7.04332 4.16949 11.3898V15.7288C4.16949 20.0753 4.16949 22.2486 5.51978 23.5989C6.87007 24.9492 9.04332 24.9492 13.3898 24.9492H17.7288C22.0753 24.9492 24.2486 24.9492 25.5989 23.5989C26.9492 22.2486 26.9492 20.0753 26.9492 15.7288V11.3898C26.9492 7.04332 26.9492 4.87007 25.5989 3.51978C24.2486 2.16949 22.0753 2.16949 17.7288 2.16949H13.3898C9.04332 2.16949 6.87007 2.16949 5.51978 3.51978ZM18.479 10.6761C20.51 12.1144 21.5254 12.8336 21.5254 13.8305C21.5254 14.8274 20.51 15.5466 18.479 16.9849L16.8824 18.1156C14.1655 20.0398 12.807 21.0019 11.7425 20.4607C10.678 19.9195 10.678 18.2668 10.678 14.9613V12.6998C10.678 9.39427 10.678 7.74151 11.7425 7.2003C12.807 6.65909 14.1655 7.62118 16.8824 9.54537L18.479 10.6761Z" fill="#007EF2"/></svg></span>
-            <span class="pc-id">
-              <span class="pc-platform">Trula</span>
-              <span class="pc-title">twitch · tarnum_mlbb</span>
-            </span>
-            <span class="dn-badge">Онлайн</span>
-          </span>
-          <span class="pc-desc">Донаты прямо через Twitch — быстро и без лишних шагов.</span>
-          <span class="pc-go">Задонатить <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></span></span>
-        </a>
       </div>
 
-      <p class="don-note" data-reveal>Каждый донат читается в эфире — <b>поддержка = больше стримов</b> 💛</p>
+      <p class="don-note" data-reveal>Каждый донат читается в эфире — <b>поддержка = больше стримов</b> 💛 · <a href="#price" data-scrollto="price">прайс заказов</a></p>
+    </section>
+    <!-- ============ ПРАЙС ============ -->
+    <section class="wrap section" id="price" aria-labelledby="prTitle">
+      <div class="sec-head" data-reveal>
+        <div>
+          <p class="kicker">03 · Прайс</p>
+          <h2 id="prTitle">Заказы и интерактив на стриме</h2>
+        </div>
+        <p class="sec-note">Цены в рублях</p>
+      </div>
+
+      <ul class="price-grid">
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Рулетка</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">каждые 1000 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Продлить стрим на 1 час</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">1000 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ музыки</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">100 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Чек акка</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">150 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (мета/околомета)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">300 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (не мета)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">400 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (аргус, линг, фанни, гусь)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">1000 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Совместная игра (до слива)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">300 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ билда</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">500 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Игра с войсом весь стрим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">3000 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Закончить стрим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">5000 рублей</span></div></li>
+        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Алкострим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">4000 рублей</span></div></li>
+        <li class="price-item wide" data-reveal><div class="pr-row"><span class="pr-name">Заказ игры</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">от 5000 рублей</span></div>
+          <p class="pr-sub">+ покупка игры · <b>согласовывать перед донатом</b></p></li>
+      </ul>
     </section>
   </main>
 
