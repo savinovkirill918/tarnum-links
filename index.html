@@ -370,6 +370,29 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
 .foot-gems svg{width:9px;height:9px}
 .foot-gems .mid{width:5px;height:5px;transform:rotate(45deg);background:var(--gold)}
 
+/* CTA: заказ такой же страницы */
+.foot-cta-row{margin-top:18px;display:flex;justify-content:center}
+.foot-cta{display:inline-flex;align-items:center;gap:9px;max-width:100%;padding:11px 20px;
+  border:1px solid rgba(240,182,74,.3);border-radius:999px;
+  background:linear-gradient(180deg,rgba(240,182,74,.08),rgba(240,182,74,.02));
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;color:var(--muted);
+  text-decoration:none;
+  transition:border-color .35s,box-shadow .35s,transform .35s,background .35s}
+.foot-cta svg{width:15px;height:15px;color:#7ec8f0;flex:none;transition:filter .35s}
+.foot-cta .fc-arr{color:var(--gold);transition:transform .35s}
+.foot-cta b{color:var(--gold-hi);font-weight:600;white-space:nowrap}
+.foot-cta .fc-short{display:none}
+.foot-cta:hover{border-color:rgba(240,182,74,.62);transform:translateY(-2px);
+  background:linear-gradient(180deg,rgba(240,182,74,.13),rgba(240,182,74,.03));
+  box-shadow:0 10px 32px -12px rgba(240,182,74,.4)}
+.foot-cta:hover .fc-arr{transform:translateX(3px)}
+.foot-cta:hover svg{filter:drop-shadow(0 0 6px rgba(58,169,224,.55))}
+@media (max-width:480px){
+  .foot-cta{padding:10px 16px;font-size:11.5px}
+  .foot-cta .fc-long{display:none}
+  .foot-cta .fc-short{display:inline}
+}
+
 /* ---------- reveal ---------- */
 [data-reveal]{opacity:0;visibility:hidden}
 
@@ -652,6 +675,14 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 5 9l7 13 7-13-7-7Z"/></svg>
       </div>
       <p class="c">Стримы ежедневно · 18:00 МСК</p>
+    </div>
+    <div class="wrap foot-cta-row">
+      <a class="foot-cta" href="https://t.me/Zykawoo" target="_blank" rel="noopener" aria-label="Заказать похожую страницу — Telegram @Zykawoo, откроется в новой вкладке">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span class="fc-q fc-long">Хочешь такую же страницу?</span><span class="fc-q fc-short">Такая же страница?</span>
+        <span class="fc-arr" aria-hidden="true">→</span>
+        <b>@Zykawoo</b>
+      </a>
     </div>
   </footer>
 </div>
