@@ -327,19 +327,46 @@ h1.name .ch{display:inline-block;
 .pc-dn .pc-title{font-size:15.5px}
 .pc-dn .pc-desc{margin-top:10px;font-size:13px}
 
-/* ---------- прайс ---------- */
-.price-grid{display:grid;grid-template-columns:1fr;gap:10px;list-style:none}
-@media (min-width:760px){.price-grid{grid-template-columns:1fr 1fr;gap:12px}}
-.price-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;
-  transition:border-color .35s}
-.price-item:hover{border-color:rgba(240,182,74,.42)}
+/* ---------- прайс (карточки с ярусами) ---------- */
+.price-grid{display:grid;grid-template-columns:1fr;gap:12px;list-style:none}
+@media (min-width:760px){.price-grid{grid-template-columns:1fr 1fr;gap:14px}}
+.price-item{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:16px 20px;overflow:hidden;isolation:isolate;will-change:transform;
+  transition:border-color .35s,box-shadow .35s}
+.price-item:hover{border-color:rgba(240,182,74,.42);box-shadow:0 12px 34px -14px rgba(240,182,74,.22)}
+.price-item::before,.price-item::after{content:"";position:absolute;width:12px;height:12px;
+  border:1.5px solid rgba(240,182,74,.45);opacity:.5;transition:opacity .35s;pointer-events:none}
+.price-item::before{top:8px;left:8px;border-right:0;border-bottom:0;border-top-left-radius:4px}
+.price-item::after{bottom:8px;right:8px;border-left:0;border-top:0;border-bottom-right-radius:4px}
+.price-item:hover::before,.price-item:hover::after{opacity:1}
+.price-item .glow{position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .45s;pointer-events:none;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(240,182,74,.15),transparent 62%)}
+.price-item:hover .glow{opacity:1}
 .price-item.wide{grid-column:1/-1}
-.pr-row{display:flex;align-items:baseline;gap:12px}
-.pr-name{font-size:14px;font-weight:600;color:var(--ink);min-width:0}
-.pr-dots{flex:1;min-width:14px;border-bottom:1px dashed rgba(246,241,228,.18);transform:translateY(-3px)}
-.pr-val{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gold-hi);white-space:nowrap;flex:none}
-.pr-sub{margin-top:7px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted-2)}
+.pr-num{flex:none;width:34px;height:34px;display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:11px;font-weight:600;color:rgba(240,182,74,.8);
+  border:1px solid rgba(240,182,74,.3);border-radius:10px;background:rgba(240,182,74,.07);
+  transition:color .35s,border-color .35s,background .35s}
+.price-item:hover .pr-num{color:var(--gold-hi);border-color:rgba(240,182,74,.6);background:rgba(240,182,74,.12)}
+.pr-name{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35;flex:1 1 auto;min-width:140px}
+.pr-main{flex:1 1 auto;min-width:140px;display:flex;flex-direction:column;gap:4px}
+.pr-main .pr-name{flex:none;min-width:0}
+.pr-sub{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted-2)}
 .pr-sub b{color:var(--gold);font-weight:600}
+.pr-chip{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--gold-hi);
+  border:1px solid rgba(240,182,74,.32);border-radius:999px;padding:8px 14px;
+  background:linear-gradient(180deg,rgba(240,182,74,.14),rgba(240,182,74,.05));
+  text-shadow:0 0 14px rgba(240,182,74,.3);white-space:nowrap}
+.pr-chip .gem{width:11px;height:11px;flex:none}
+/* ярусы: r2 — ярче; r3 — «легендарный» цельнозолотой чип с гемом */
+.price-item.r2 .pr-chip{border-color:rgba(240,182,74,.55);
+  background:linear-gradient(180deg,rgba(240,182,74,.22),rgba(240,182,74,.08))}
+.price-item.r3{border-color:rgba(240,182,74,.35)}
+.price-item.r3:hover{box-shadow:0 12px 36px -12px rgba(240,182,74,.3)}
+.price-item.r3 .pr-chip{color:#1c1305;border-color:transparent;text-shadow:none;
+  background:linear-gradient(180deg,#ffd98a,#f0b64a);box-shadow:0 0 20px rgba(240,182,74,.28)}
 
 /* ---------- футер ---------- */
 footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
@@ -600,20 +627,19 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
       </div>
 
       <ul class="price-grid">
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Рулетка</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">каждые 1000 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Продлить стрим на 1 час</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">1000 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ музыки</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">100 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Чек акка</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">150 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (мета/околомета)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">300 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (не мета)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">400 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ героя (аргус, линг, фанни, гусь)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">1000 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Совместная игра (до слива)</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">300 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Заказ билда</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">500 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Игра с войсом весь стрим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">3000 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Закончить стрим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">5000 рублей</span></div></li>
-        <li class="price-item" data-reveal><div class="pr-row"><span class="pr-name">Алкострим</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">4000 рублей</span></div></li>
-        <li class="price-item wide" data-reveal><div class="pr-row"><span class="pr-name">Заказ игры</span><i class="pr-dots" aria-hidden="true"></i><span class="pr-val">от 5000 рублей</span></div>
-          <p class="pr-sub">+ покупка игры · <b>согласовывать перед донатом</b></p></li>
+        <li class="price-item r2" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">01</span><span class="pr-name">Рулетка</span><span class="pr-chip">каждые 1000 рублей</span></li>
+        <li class="price-item r2" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">02</span><span class="pr-name">Продлить стрим на 1 час</span><span class="pr-chip">1000 рублей</span></li>
+        <li class="price-item" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">03</span><span class="pr-name">Заказ музыки</span><span class="pr-chip">100 рублей</span></li>
+        <li class="price-item" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">04</span><span class="pr-name">Чек акка</span><span class="pr-chip">150 рублей</span></li>
+        <li class="price-item" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">05</span><span class="pr-name">Заказ героя (мета/околомета)</span><span class="pr-chip">300 рублей</span></li>
+        <li class="price-item" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">06</span><span class="pr-name">Заказ героя (не мета)</span><span class="pr-chip">400 рублей</span></li>
+        <li class="price-item r2" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">07</span><span class="pr-name">Заказ героя (аргус, линг, фанни, гусь)</span><span class="pr-chip">1000 рублей</span></li>
+        <li class="price-item" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">08</span><span class="pr-name">Совместная игра (до слива)</span><span class="pr-chip">300 рублей</span></li>
+        <li class="price-item r2" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">09</span><span class="pr-name">Заказ билда</span><span class="pr-chip">500 рублей</span></li>
+        <li class="price-item r3" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">10</span><span class="pr-name">Игра с войсом весь стрим</span><span class="pr-chip"><svg class="gem" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 5 9l7 13 7-13-7-7Z"/></svg>3000 рублей</span></li>
+        <li class="price-item r3" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">11</span><span class="pr-name">Закончить стрим</span><span class="pr-chip"><svg class="gem" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 5 9l7 13 7-13-7-7Z"/></svg>5000 рублей</span></li>
+        <li class="price-item r3" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">12</span><span class="pr-name">Алкострим</span><span class="pr-chip"><svg class="gem" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 5 9l7 13 7-13-7-7Z"/></svg>4000 рублей</span></li>
+        <li class="price-item r3 wide" data-reveal><span class="glow" aria-hidden="true"></span><span class="pr-num" aria-hidden="true">13</span><span class="pr-main"><span class="pr-name">Заказ игры</span><span class="pr-sub">+ покупка игры · <b>согласовывать перед донатом</b></span></span><span class="pr-chip"><svg class="gem" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 5 9l7 13 7-13-7-7Z"/></svg>от 5000 рублей</span></li>
       </ul>
     </section>
   </main>
@@ -790,7 +816,7 @@ footer{margin-top:clamp(64px,10vh,110px);border-top:1px solid var(--line);
 
     /* tilt + glow карточек (transform-only, как учит gsap-performance) */
     if (!reduced && window.matchMedia('(pointer:fine)').matches){
-      gsap.utils.toArray('.pcard, .featured').forEach(function(card){
+      gsap.utils.toArray('.pcard, .featured, .price-item').forEach(function(card){
         gsap.set(card, { transformPerspective: 900 });
         var rx = gsap.quickTo(card, 'rotationX', { duration:.5, ease:'power2' }),
             ry = gsap.quickTo(card, 'rotationY', { duration:.5, ease:'power2' });
